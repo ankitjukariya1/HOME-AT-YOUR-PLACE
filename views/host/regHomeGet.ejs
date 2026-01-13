@@ -1,0 +1,44 @@
+<%- include('../partials/head.ejs')%>
+<body>
+  <header><%- include ('../partials/nav.ejs')%>
+    <h3>Register with us</h3></header>
+  <main>
+    <form action="/reg-home" method="post">
+      <ul>
+        <li>
+          <label for="houseName">Enter House Name :</label>
+          <input type="text" id="houseName" placeholder="House name" name="houseName" required>
+        </li>
+         <li>
+          <label for="price">Enter Price :</label>
+          <input type="text" id="price" placeholder="Enter price" name="price" required>
+        </li>
+         <li>
+          <label for="phoneNo">Contact no. :</label>
+          <input type="text" id="phoneNo" placeholder="Contact number" name="phoneNo" required>
+          
+        </li>
+        <li>
+          <label for="address">Address :</label>
+          <input type="text" id="address" placeholder="Address" name="address" required>
+
+        </li>
+        <li>
+          <label for="homeimg">Attach image of your Home :</label>
+          <input type="file" id="homeimg"  name="image">
+          
+        </li>
+        <li>
+          <label for="description">Describe Your Place :</label>
+          <input type="text" placeholder="Describe your Place" name="description" id="description">
+        </li>
+        <li>
+          <button type="submit">Submit</button>
+        </li>
+
+      </ul>
+    </form>
+  </main>
+  
+</body>
+</html>

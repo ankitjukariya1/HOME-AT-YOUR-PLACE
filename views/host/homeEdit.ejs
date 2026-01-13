@@ -1,0 +1,45 @@
+<%- include('../partials/head.ejs') %>
+<body>
+  <header>
+    <%- include('../partials/nav.ejs') %>
+  </header>
+
+  <main>
+    <form action="/host" method="post">
+       <ul>
+        <li>
+          <label for="houseName">Enter House Name :</label>
+          <input type="text" value="<%= house.houseName %>" id="houseName" placeholder="House name" name="houseName">
+        </li>
+         <li>
+          <label for="price">Enter Price :</label>
+          <input type="text" value="<%= house.price %>" id="price" placeholder="Enter price" name="price">
+        </li>
+         <li>
+          <label for="phoneNo">Contact no. :</label>
+          <input type="text" value="<%= house.phoneNo %>" id="phoneNo" placeholder="Contact number" name="phoneNo">
+          
+        </li>
+        <li>
+          <label for="address">Address :</label>
+          <input type="text" value="<%= house.address %>" id="address" placeholder="Address" name="address">
+
+        </li>
+        <li>
+          <label for="homeimg">Attach image of your Home :</label>
+          <input type="file" value="<%= house.image %>" id="homeimg"  name="image">
+          
+        </li>
+        <li>
+          <label for="description">Describe Your Place :</label>
+          <input type="text" value="<%= house.description %>" placeholder="Describe your Place" name="description" id="description">
+        </li>
+        <input type="hidden" name="id" value="<%=house.id %>">
+       
+          <button type="submit">UPDATE</button>
+        
+
+      </ul>
+    </form>
+  </main>
+</body>

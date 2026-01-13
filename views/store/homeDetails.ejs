@@ -1,0 +1,21 @@
+<%- include ('../partials/head.ejs')%>
+<body>
+  <%- include('../partials/nav.ejs')%>
+  
+<main>
+ <div id="imageDiv">
+ <img src="/download.jfif" alt="House image">
+ </div>
+ <div id="detailDiv">
+  <p>House Name : <%= home.houseName %></p>
+  <p>Price : <%= home.price %> </p>
+  <p>Address : <%= home.address %> </p>
+  <p>Contact No. :<%= home.phoneNo %></p>
+  <p>Description : <%=home.description %></p>
+ </div>
+ <div id = bookMe>
+  <a href="/home-details/<%= home.id %>/paymentDetails">BOOK ME</a>
+ </div>
+</main>
+</body>
+</html>

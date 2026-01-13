@@ -1,0 +1,25 @@
+<%- include('../partials/head.ejs')%>
+<body>
+  <header>
+    <%- include('../partials/nav.ejs') %>
+    <h1>Welcome to HOME AT YOUR PLACE</h1>
+  </header>
+  <main class="houses-container">
+    <%  houses.forEach(house => { %>
+       <div class="house-card">
+         <img src="download.jfif" alt="House image"> 
+         <div class="card-content">
+          <p class="house-price"><strong>Price:</strong> <%= house.price %></p> 
+          <p class="house-location"><strong>Location:</strong> <%= house.address %></p>
+          <div class="card-links">
+            <a href="/home-details/<%= house.id %>" class="detail-link">View Details</a>
+            <a href="/home-details/<%= house.id %>/paymentDetails" class="book-now-btn">BOOK ME</a>
+          </div>
+         </div>
+       </div>
+       
+    <%})%>
+  </main>
+  
+</body>
+</html>

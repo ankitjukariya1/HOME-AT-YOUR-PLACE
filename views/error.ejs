@@ -1,0 +1,23 @@
+<%- include('./partials/head.ejs') %>
+<header>
+  <%- include('./partials/nav.ejs') %>
+  <h1>Oops! Something Went Wrong</h1>
+</header>
+
+<main>
+  <div class="error-container">
+    <div class="error-code">404</div>
+    <h2 class="error-title">Page Not Found</h2>
+    <p class="error-message">
+      We couldn't find the page you're looking for. It might have been moved or deleted.
+      Let's get you back to exploring amazing homes!
+    </p>
+    <div class="error-actions">
+      <a href="/" class="error-btn btn-primary">Go Home</a>
+      <a href="/host" class="error-btn btn-secondary">View Properties</a>
+    </div>
+  </div>
+</main>
+
+</body>
+</html>

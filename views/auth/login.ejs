@@ -1,0 +1,25 @@
+<%- include('../partials/head.ejs') %>
+<header>
+ <%- include('../partials/nav.ejs') %> 
+</header>
+<main>
+  <form action="/home/login" method="post">
+    <ul>
+      <li>
+        <label for="userName">User Name :</label>
+       <input type="text" placeholder="Username/Email" name="userName" id="userName" required>
+      </li>
+       <li>
+        <label for="password">Password :</label>
+       <input type="password" placeholder="Password" name="password" id="password" required>
+      </li>
+      <li>
+        <button>Submit</button>
+      </li>
+    </ul>
+  </form>
+</main>
+
+</body>
+
+</html>
