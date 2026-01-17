@@ -1,0 +1,51 @@
+<%- include('../partials/head.ejs') %>
+<header>
+<%- include('../partials/nav.ejs') %>
+</header>
+<main>
+
+<form action="/sign-up" method="post">
+  <%- include('../partials/validationErr.ejs') %>
+  <ul>
+    <li>
+      <label for="fn">First Name</label>
+      <input type="text" placeholder="Enter your first name" name="firstName" id="fn" required>
+    </li>
+    <li>
+      <label for="ln">Last Name</label>
+       <input type="text" placeholder="Enter your last name" name="lastName" id="ln" required>
+    </li>
+    <li>
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+    </li>
+    <li>
+      <label for="contactNo">Contact Number</label>
+      <input type="text" placeholder="Enter your phone number" id="contactNo" name="contactNo" required>
+    </li>
+    <li>
+      <label>Account Type</label>
+     
+      <input type="radio" id="propertyOwner" name="userType" value="propertyOwner">
+       <label for="propertyOwner">Property Owner</label>
+
+      <input type="radio" id="visitor" name="userType" value="visitor">
+      <label for="visitor">Visitor</label>
+    </li>
+    <li>
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" placeholder="Create a strong password" required>
+    </li>
+    <li>
+      <label for="confirmPassword">Confirm Password</label>
+      <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter your password" required>
+    </li>
+    <li>
+      <button type="submit">Create Account</button>
+    </li>
+  </ul>
+</form>
+</main>
+</body>
+
+</html>

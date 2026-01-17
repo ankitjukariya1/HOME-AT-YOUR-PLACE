@@ -3,21 +3,31 @@
  <%- include('../partials/nav.ejs') %> 
 </header>
 <main>
+  
+  <div class="whole">
+    <%- include('../partials/validationErr.ejs') %>
+    <% if (status != false) { %> 
+      <div class="status info">
+        <%= status %> 
+      </div>
+     <%}  %> 
   <form action="/home/login" method="post">
     <ul>
       <li>
-        <label for="userName">User Name :</label>
-       <input type="text" placeholder="Username/Email" name="userName" id="userName" required>
+        <label for="userName">Email or Username</label>
+       <input type="text" placeholder="Enter your email or username" name="userName" id="userName" required>
       </li>
        <li>
         <label for="password">Password :</label>
-       <input type="password" placeholder="Password" name="password" id="password" required>
+       <input type="password" placeholder="Abc@1" name="password" id="password" required>
       </li>
       <li>
-        <button>Submit</button>
+        <button type="submit">Sign In</button>
       </li>
     </ul>
   </form>
+  <div class="sign-up"><a href="/sign-up">Don't have an account? Create one now →</a></div>
+  </div>
 </main>
 
 </body>

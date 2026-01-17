@@ -129,7 +129,7 @@ header h3 {
 
 /* Main Content */
 main {
-  max-width: 600px;
+  max-width: 700px;
   margin: 0 auto;
   padding: 0 1.5rem 3rem;
 }
@@ -142,11 +142,23 @@ form {
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   border: 1px solid #f0f1f3;
   transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+form::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
 }
 
 form:hover {
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+  transform: translateY(-3px);
 }
 
 form ul {
@@ -154,40 +166,64 @@ form ul {
 }
 
 form li {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.75rem;
+  animation: fadeIn 0.5s ease-out both;
+}
+
+form li:nth-child(1) { animation-delay: 0.1s; }
+form li:nth-child(2) { animation-delay: 0.2s; }
+form li:nth-child(3) { animation-delay: 0.3s; }
+form li:nth-child(4) { animation-delay: 0.4s; }
+form li:nth-child(5) { animation-delay: 0.5s; }
+form li:nth-child(6) { animation-delay: 0.6s; }
+form li:nth-child(7) { animation-delay: 0.7s; }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 form label {
   display: block;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.7rem;
   font-weight: 700;
   color: #1f2937;
-  font-size: 0.95rem;
+  font-size: 0.98rem;
+  letter-spacing: 0.3px;
+  text-transform: capitalize;
 }
 
 form input[type="text"],
 form input[type="file"] {
   width: 100%;
   padding: 0.95rem 1rem;
-  border: 1px solid #e5e7eb;
+  border: 2px solid #e5e7eb;
   border-radius: 10px;
   font-size: 0.95rem;
   font-family: inherit;
   transition: all 0.3s ease;
   background: #f9fafb;
+  position: relative;
 }
 
 form input[type="text"]:hover,
 form input[type="file"]:hover {
   border-color: #d1d5db;
   background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 form input[type="text"]:focus,
 form input[type="file"]:focus {
   outline: none;
-  border-color: #6366f1;
-  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+  border-color: #667eea;
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
   background: #ffffff;
   transform: translateY(-2px);
 }
@@ -202,7 +238,7 @@ form input[type="file"] {
 }
 
 form input[type="file"]::file-selector-button {
-  padding: 0.5rem 1rem;
+  padding: 0.6rem 1.2rem;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   border: none;
@@ -211,11 +247,13 @@ form input[type="file"]::file-selector-button {
   font-weight: 600;
   margin-right: 1rem;
   transition: all 0.3s ease;
+  font-size: 0.9rem;
 }
 
 form input[type="file"]::file-selector-button:hover {
   background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
   transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
 }
 
 /* Submit Button */
@@ -233,6 +271,21 @@ button[type="submit"] {
   box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
   letter-spacing: 0.8px;
   text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+}
+
+button[type="submit"]::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
 }
 
 button[type="submit"]:hover {
@@ -241,12 +294,23 @@ button[type="submit"]:hover {
   box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
 }
 
+button[type="submit"]:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
 button[type="submit"]:active {
   transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
 }
 
 /* Responsive */
 @media (max-width: 768px) {
+  header {
+    padding: 2rem 1.5rem;
+    margin-bottom: 1.75rem;
+  }
+
   header nav,
   nav {
     padding: 0.75rem;
@@ -261,13 +325,83 @@ button[type="submit"]:active {
 
   header h3 {
     font-size: 1.75rem;
+    margin-top: 1rem;
+  }
+
+  main {
+    padding: 0 1rem 2rem;
   }
 
   form {
-    padding: 1.75rem;
+    padding: 2rem;
   }
 
   form li {
     margin-bottom: 1.2rem;
+  }
+
+  button[type="submit"] {
+    padding: 0.95rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    padding: 1.5rem 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  header h3 {
+    font-size: 1.35rem;
+    word-wrap: break-word;
+  }
+
+  main {
+    padding: 0 1rem 2rem;
+  }
+
+  form {
+    padding: 1.5rem 1rem;
+  }
+
+  form li {
+    margin-bottom: 1rem;
+  }
+
+  form label {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+
+  form input[type="text"],
+  form input[type="file"] {
+    padding: 0.85rem 0.9rem;
+    font-size: 0.9rem;
+  }
+
+  form input[type="file"]::file-selector-button {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.8rem;
+    margin-right: 0.5rem;
+  }
+
+  button[type="submit"] {
+    padding: 0.85rem;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+  }
+
+  header nav a,
+  nav a {
+    margin: 0 0.4rem;
+    padding: 0.5rem 0.7rem;
+    font-size: 0.75rem;
+  }
+
+  .error {
+    padding: 1rem 1.2rem;
+    font-size: 0.9rem;
+    margin: -1rem 0 1rem 0;
   }
 }

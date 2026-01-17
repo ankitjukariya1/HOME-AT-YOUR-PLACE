@@ -1,0 +1,8 @@
+ <% if (error !== false) { %>
+    <div class="error">
+      <% error.forEach(val => { %>
+       <span>=></span> <%= val %><br>
+        
+      <% }) %>
+    </div>
+  <% } %>
