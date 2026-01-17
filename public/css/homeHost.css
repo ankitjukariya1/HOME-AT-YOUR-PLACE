@@ -1,4 +1,4 @@
-/* Modern Light Design - Home Page */
+/* Modern Premium Design - Host Home Page */
 
 * {
   margin: 0;
@@ -26,6 +26,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
+  backdrop-filter: blur(10px);
 }
 
 nav a {
@@ -34,7 +35,7 @@ nav a {
   margin: 0 1.5rem;
   padding: 0.75rem 1.5rem;
   font-weight: 600;
-  border-radius: 8px;
+  border-radius: 25px;
   transition: all 0.3s ease;
   position: relative;
   font-size: 0.95rem;
@@ -47,20 +48,20 @@ nav a::before {
   left: 50%;
   transform: translateX(-50%);
   width: 0;
-  height: 2px;
+  height: 3px;
   background: linear-gradient(90deg, #6366f1, #8b5cf6);
   transition: width 0.3s ease;
-  border-radius: 1px;
+  border-radius: 2px;
 }
 
 nav a:hover {
   color: #6366f1;
   background: #f3f4f6;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
 }
 
 nav a:hover::before {
-  width: 70%;
+  width: 80%;
 }
 
 /* Header */
@@ -69,24 +70,63 @@ header {
   padding: 4rem 2rem 3rem;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.1)" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+  background-size: cover;
+  background-position: bottom;
+  opacity: 0.3;
 }
 
 header h1 {
-  font-size: 3.2rem;
+  font-size: 3.5rem;
   font-weight: 800;
   letter-spacing: -1px;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 1;
+  animation: fadeInDown 0.8s ease-out;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Houses Container */
 .houses-container {
-  max-width: 1300px;
+  max-width: 1400px;
   margin: 3rem auto;
   padding: 0 1.5rem 3rem;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2.5rem;
+  animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* House Card */
@@ -122,6 +162,7 @@ header h1 {
   border-color: #e0e7ff;
 }
 
+/* Image Container */
 .house-card img {
   width: 100%;
   height: 280px;
@@ -138,11 +179,18 @@ header h1 {
   padding: 1.8rem;
 }
 
+.card-content p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  color: #4b5563;
+  line-height: 1.6;
+}
+
 .houseName {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   font-weight: 700;
   color: #1f2937;
-  margin-bottom: 0.8rem;
+  margin-bottom: 1rem;
 }
 
 .house-price {
@@ -160,9 +208,6 @@ header h1 {
   align-items: center;
   gap: 0.5rem;
   color: #6b7280;
-  margin-bottom: 0.8rem;
-  font-size: 0.95rem;
-  line-height: 1.5;
 }
 
 .house-location::before {
@@ -175,9 +220,6 @@ header h1 {
   align-items: center;
   gap: 0.5rem;
   color: #6b7280;
-  margin-bottom: 0.8rem;
-  font-size: 0.95rem;
-  line-height: 1.5;
 }
 
 .contact::before {
@@ -186,129 +228,144 @@ header h1 {
 }
 
 .description {
-  color: #6b7280;
-  margin-bottom: 0.8rem;
   font-size: 0.95rem;
+  color: #6b7280;
   line-height: 1.7;
   padding-top: 0.5rem;
   border-top: 1px solid #f3f4f6;
 }
 
-strong {
-  color: #1f2937;
-  font-weight: 700;
-  margin-right: 0.5rem;
-}
-
-/* Card Links */
+/* Card Links/Buttons */
 .card-links {
   display: flex;
   gap: 1rem;
-  margin-top: 1.75rem;
+  margin-top: 1.5rem;
   padding-top: 1.5rem;
   border-top: 2px solid #f3f4f6;
-}
-
-a {
-  text-decoration: none;
 }
 
 .card-links form {
   flex: 1;
 }
 
-.card-links a,
 .card-links button {
-  flex: 1;
+  width: 100%;
   padding: 0.9rem 1.5rem;
   border: none;
   border-radius: 12px;
+  font-size: 1rem;
   font-weight: 700;
   cursor: pointer;
-  font-size: 0.95rem;
   transition: all 0.3s ease;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
-  text-align: center;
-  display: inline-block;
-  width: 100%;
 }
 
-.card-links a:hover,
-.card-links button:hover {
+button.edit {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+button.edit:hover {
   transform: translateY(-3px);
-  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
-}
-
-.detail-link {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-}
-
-.detail-link:hover {
-  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
   box-shadow: 0 6px 25px rgba(102, 126, 234, 0.4);
 }
 
-.book-now-btn {
-  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+button.delete {
+  background: linear-gradient(135deg, #f87171 0%, #dc2626 100%);
   color: white;
+  box-shadow: 0 4px 15px rgba(248, 113, 113, 0.3);
 }
 
-.book-now-btn:hover {
-  background: linear-gradient(135deg, #059669 0%, #10b981 100%);
-  box-shadow: 0 6px 25px rgba(16, 185, 129, 0.4);
+button.delete:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 25px rgba(248, 113, 113, 0.4);
 }
 
-.edit {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+button.edit:active,
+button.delete:active {
+  transform: translateY(-1px);
 }
 
-.edit:hover {
-  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
-  box-shadow: 0 6px 25px rgba(102, 126, 234, 0.4);
+/* Empty State */
+.houses-container:empty::before {
+  content: 'No properties listed yet. Start by adding your first property!';
+  display: block;
+  text-align: center;
+  font-size: 1.2rem;
+  color: #9ca3af;
+  padding: 4rem 2rem;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  grid-column: 1 / -1;
 }
 
-.delete {
-  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
-  color: white;
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .houses-container {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+  }
 }
 
-.delete:hover {
-  background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
-  box-shadow: 0 6px 25px rgba(239, 68, 68, 0.4);
-}
-
-/* Responsive */
 @media (max-width: 768px) {
   header h1 {
-    font-size: 2.2rem;
+    font-size: 2.5rem;
   }
 
   .houses-container {
     grid-template-columns: 1fr;
-    padding: 0 1rem 2rem;
+    gap: 1.5rem;
+    margin: 2rem auto;
+  }
+
+  .house-card img {
+    height: 220px;
+  }
+
+  .card-content {
+    padding: 1.5rem;
   }
 
   nav {
-    padding: 0.75rem;
+    padding: 0.8rem 1rem;
   }
 
   nav a {
     margin: 0 0.5rem;
     padding: 0.6rem 1rem;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    padding: 3rem 1.5rem 2rem;
+  }
+
+  header h1 {
+    font-size: 2rem;
+  }
+
+  .houses-container {
+    padding: 0 1rem 2rem;
   }
 
   .card-links {
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.8rem;
   }
 
   .card-links button {
-    font-size: 0.8rem;
-    padding: 0.7rem 1rem;
+    padding: 0.8rem 1rem;
+    font-size: 0.95rem;
+  }
+
+  nav a {
+    margin: 0 0.3rem;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.85rem;
   }
 }

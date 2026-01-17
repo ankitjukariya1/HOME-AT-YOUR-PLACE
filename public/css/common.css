@@ -1,0 +1,123 @@
+/* Common Navigation Styles - To be imported in all pages */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f9fafb;
+  color: #1f2937;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* Main Navigation */
+.main-nav,
+nav {
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid #e5e7eb;
+  backdrop-filter: blur(10px);
+}
+
+.nav-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.nav-link,
+nav a {
+  color: #4b5563;
+  text-decoration: none;
+  margin: 0 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  position: relative;
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+.nav-link::before,
+nav a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  transition: width 0.3s ease;
+  border-radius: 2px;
+}
+
+.nav-link:hover,
+nav a:hover {
+  color: #667eea;
+  background: #f3f4f6;
+  transform: translateY(-2px);
+}
+
+.nav-link:hover::before,
+nav a:hover::before {
+  width: 80%;
+}
+
+/* Responsive Navigation */
+@media (max-width: 1024px) {
+  .nav-link,
+  nav a {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+    margin: 0 0.3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-nav,
+  nav {
+    padding: 0.75rem 1rem;
+  }
+
+  .nav {
+    gap: 0.3rem;
+  }
+
+  .nav-link,
+  nav a {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.85rem;
+    margin: 0 0.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .nav-link,
+  nav a {
+    text-align: center;
+    margin: 0.2rem 0;
+    padding: 0.6rem 1rem;
+  }
+}

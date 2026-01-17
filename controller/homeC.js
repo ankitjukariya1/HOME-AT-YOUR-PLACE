@@ -1,4 +1,4 @@
-const home = require('./../model/home');
+const {home} = require('./../model/home');
 
 
 exports.homeGet =async (req,res,next)=>{

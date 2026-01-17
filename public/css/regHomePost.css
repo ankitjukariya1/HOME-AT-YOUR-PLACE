@@ -67,43 +67,67 @@ nav a:hover::before {
 h3 {
   max-width: 700px;
   margin: 3rem auto 0;
-  padding: 2rem;
-  background: #ffffff;
+  padding: 2.5rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   border-radius: 16px 16px 0 0;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-  border: 1px solid #f0f1f3;
-  border-bottom: none;
+  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+  border: none;
   text-align: center;
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: 800;
-  color: #1f2937;
+  color: white;
   transition: all 0.3s ease;
   letter-spacing: -0.5px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+h3::before {
+  content: '✓';
+  display: block;
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  animation: checkmark 0.8s ease-out;
+}
+
+@keyframes checkmark {
+  0% {
+    transform: scale(0) rotate(-45deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2) rotate(0deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
 }
 
 h3:hover {
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 30px rgba(102, 126, 234, 0.4);
+  transform: translateY(-2px);
 }
 
 /* Details */
 h5 {
   max-width: 700px;
   margin: 0 auto 3rem;
-  padding: 2rem;
+  padding: 2.5rem;
   background: #ffffff;
   border-radius: 0 0 16px 16px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-  border: 1px solid #f0f1f3;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 2px solid #e0e7ff;
   border-top: none;
-  font-size: 1rem;
-  line-height: 1.8;
-  color: #6b7280;
-  font-weight: 400;
+  font-size: 1.05rem;
+  line-height: 2;
+  color: #4b5563;
+  font-weight: 500;
   transition: all 0.3s ease;
 }
 
 h5:hover {
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 30px rgba(102, 126, 234, 0.15);
+  transform: translateY(-2px);
 }
 
 h5 br {

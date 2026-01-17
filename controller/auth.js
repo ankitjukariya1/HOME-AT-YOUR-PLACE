@@ -2,7 +2,7 @@ exports.authRouterGet = (req,res,next)=>{
     
   res.render('auth/login.ejs',{
     title: 'Login page',
-    link : ''
+    link : '/css/login.css'
   })
 }
 exports.authRouterPost = (req,res,next)=>{

@@ -16,7 +16,7 @@ body {
 
 /* Navigation */
 nav {
-  background: #7aa0f1;
+  background: #ffffff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   padding: 1rem 2rem;
   position: sticky;
@@ -26,6 +26,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
+  backdrop-filter: blur(10px);
 }
 
 nav a {
@@ -75,52 +76,54 @@ main {
 
 /* Image Container */
 #imageDiv {
-  background: #d1c8c8;
-  border-radius: 16px;
+  background: #ffffff;
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-  border: 1px solid #f0f1f3;
-  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 2px solid #f0f1f3;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 #imageDiv:hover {
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
-  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(102, 126, 234, 0.2);
+  transform: translateY(-8px);
+  border-color: #e0e7ff;
 }
 
 #imageDiv img {
   width: 100%;
   height: 450px;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  transition: transform 0.5s ease;
 }
 
 #imageDiv:hover img {
-  transform: scale(1.04);
+  transform: scale(1.08);
 }
 
 /* Details Container */
 #detailDiv {
-  background: #cfc6c6;
-  border-radius: 16px;
-  padding: 2rem;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-  border: 1px solid #f0f1f3;
-  transition: all 0.3s ease;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 2px solid #f0f1f3;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 #detailDiv:hover {
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
-  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(102, 126, 234, 0.2);
+  transform: translateY(-8px);
+  border-color: #e0e7ff;
 }
 
 #detailDiv p {
-  margin-bottom: 1.2rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid #f0f1f3;
-  font-size: 1rem;
-  color: #6b7280;
-  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 2px solid #f3f4f6;
+  font-size: 1.05rem;
+  color: #4b5563;
+  line-height: 1.7;
 }
 
 #detailDiv p:last-child {
@@ -132,36 +135,36 @@ main {
   color: #1f2937;
   font-weight: 700;
   display: inline-block;
-  min-width: 120px;
+  min-width: 140px;
 }
 
 /* Book Button */
 #bookMe {
   grid-column: 1 / -1;
   text-align: center;
-  margin-top: 1.5rem;
+  margin-top: 2rem;
 }
 
 #bookMe a {
   display: inline-block;
-  padding: 1.1rem 3.5rem;
-  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  padding: 1.2rem 4rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   text-decoration: none;
-  border-radius: 12px;
-  font-weight: 700;
-  font-size: 1.05rem;
+  border-radius: 15px;
+  font-weight: 800;
+  font-size: 1.1rem;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.25);
-  letter-spacing: 0.8px;
+  box-shadow: 0 6px 25px rgba(102, 126, 234, 0.4);
+  letter-spacing: 1px;
   text-transform: uppercase;
   border: none;
 }
 
 #bookMe a:hover {
-  background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
-  transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(99, 102, 241, 0.35);
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 35px rgba(102, 126, 234, 0.5);
 }
 
 /* Responsive */

@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
-
-
-homeSchema = new mongoose.Schema({
+const homeSchema = new mongoose.Schema({
   houseName : { 
     type: String, 
     required: [true, 'House name is required'],
@@ -16,12 +14,6 @@ homeSchema = new mongoose.Schema({
   phoneNo : {
     type: Number, 
     required: [true, 'Phone number is required'],
-    validate: {
-      validator: function(v) {
-        return /^[0-9]{10}$/.test(v.toString());
-      },
-      message: 'Phone number must be 10 digits'
-    }
   },
   address : {
     type: String, 
@@ -48,7 +40,9 @@ homeSchema = new mongoose.Schema({
 
 //module.exports = homeSchema; wrong because we exporting schema not models
 
-module.exports = mongoose.model('home',homeSchema);
+module.exports = {
+  home: mongoose.model('home',homeSchema)
+  }
 
 
 
