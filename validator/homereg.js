@@ -12,10 +12,11 @@ exports.regValidator= [
   .toFloat()
   .isFloat({min:100,max:5000}).withMessage('Price should be in the range of 100 to 5000'),
 
-  body('phoneNo')
+  body('contactNo')
   .trim()
   .isMobilePhone()
-  .withMessage("Invalid phone no."),
+  .withMessage("Invalid contact no.")
+  ,
    
   body('address')
   .trim()

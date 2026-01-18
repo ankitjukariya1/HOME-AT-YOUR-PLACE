@@ -18,7 +18,7 @@ const homeHostPost = async (req, res, next) => {
     const result = await home.findByIdAndUpdate(req.body.id, {
       houseName: req.body.houseName,
       price: req.body.price,
-      phoneNo: req.body.phoneNo,
+      contactNo: req.body.contactNo,
       address: req.body.address,
       image: req.body.image,
       description: req.body.description,

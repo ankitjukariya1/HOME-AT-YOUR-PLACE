@@ -1,5 +1,9 @@
 //external modules
 const {validationResult , matchedData} = require('express-validator');
+const bcrypt = require('bcrypt');
+
+// local modules 
+const signupSchema = require ('../model/signup')
 
 
 // login controller
@@ -41,7 +45,7 @@ exports.signupGet = (req, res,next ) =>{
 }
 
 
-exports.signupPost = (req, res,next ) =>{
+exports.signupPost = async (req, res,next ) =>{
       const result = validationResult(req);
       if (!result.isEmpty()){
         const errorMsg = result.errors.map(val=>val.msg)
@@ -53,6 +57,25 @@ exports.signupPost = (req, res,next ) =>{
         })
       }
       else {
+        // now store data in database
+           // first hashing of password
+           const saltRound =10;
+          const hashedPassword = await bcrypt.hash(matchedData(req).password,saltRound) ;
+          console.log(hashedPassword);
+           //now update hashed password in matchedData
+          // matchedData(req).password = hashedPassword;(this is wrong because with every new call it return fresh data if we update here but later if we call again matched data it will give us again fresh data)
+
+          //so first we store matcheddata and then update pass and then send to signupSchema
+          const data = matchedData(req);
+          // now update data with hashed pass
+          data.password=hashedPassword;
+        try{
+         const user = new signupSchema(data);
+         await user.save();
+         }
+         catch(err){
+            console.log("something is wrong" + err);
+         }
          res.render('auth/login.ejs',{
           status: "Signed up Successfully now Login",
           error:false,

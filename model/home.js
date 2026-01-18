@@ -11,7 +11,7 @@ const homeSchema = new mongoose.Schema({
     required: [true, 'Price is required'],
     min: [0, 'Price cannot be negative']
   },
-  phoneNo : {
+  contactNo : {
     type: Number, 
     required: [true, 'Phone number is required'],
   },
@@ -51,10 +51,10 @@ module.exports = {
 const fs = require ('fs');
 let regHome=[];
 class home {
-  constructor (houseName,price,phoneNo,address,image,id){
+  constructor (houseName,price,contactNo,address,image,id){
     this.houseName = houseName,
     this.price = price;
-    this.phoneNo = phoneNo;
+    this.contactNo = contactNo;
     this.address = address;
     this.image = image;
     this.id = id;

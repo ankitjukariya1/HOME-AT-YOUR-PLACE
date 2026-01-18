@@ -1,4 +1,6 @@
 const {body} = require('express-validator');
+//local module
+const signupSchema = require ('../model/signup')
 
 exports.loginValidator = [ 
   body('userName')
@@ -26,13 +28,28 @@ exports.signupValidator =[
   body('email')
   .trim()
   .toLowerCase()
-  .isEmail().withMessage('Enter valid Email'),
+  .isEmail().withMessage('Enter valid Email')
+  .custom(async val=>{
+  
+    const user = await signupSchema.findOne({
+      email : val 
+    })
+     if (user) throw new Error("User is alerady registered with this Email id");
+  }),
   // contact
   body('contactNo')
   .trim()
-  .notEmpty().withMessage('Enter contact no.'),
+  .notEmpty().withMessage('Enter contact no.')
+  .custom(async (val)=>{
+      // checking if user exist with this phone no
+       const user = await signupSchema.findOne({contactNo: val});
+       if (user){
+        throw new Error ("User is alerady registered with this Contact number ")
+        
+       }
+      }), 
   //userType
-  body('userType')
+  body('accountType')
   .notEmpty().withMessage('Select any from Account type'),
 
   // password

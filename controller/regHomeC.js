@@ -18,12 +18,12 @@ exports.regHomePost = async (req, res, next) => {
       errorMsg = result.errors.map(val=>{
         return val.msg;
       })
-      const { houseName, price, phoneNo, address, image, description } = req.body;
+      const { houseName, price, contactNo, address, image, description } = req.body;
         res.render('host/regHomeGet.ejs',{
           error: errorMsg,
           houseName,
           price,
-          phoneNo,
+          contactNo,
           address,
           image,
           description,
@@ -36,7 +36,7 @@ exports.regHomePost = async (req, res, next) => {
   //   console.log("error is there");
   //   console.log(result.errors);
   //  }
-  //const {houseName, price, phoneNo, address, image} = req.body;  since now we need to pass whole object directly in schema we dont need to destructure this req.body send us object which we can send diretly
+  //const {houseName, price, contactNo, address, image} = req.body;  since now we need to pass whole object directly in schema we dont need to destructure this req.body send us object which we can send diretly
 
   
     
@@ -44,12 +44,12 @@ exports.regHomePost = async (req, res, next) => {
     await house.save();
     console.log("i am  below here");
 
-     const { houseName, price, phoneNo, address, image, description } = matchedData(req);
+     const { houseName, price, contactNo, address, image, description } = matchedData(req);
   
   res.render("host/regHomePost.ejs", {
     houseName,
     price,
-    phoneNo,
+    contactNo,
     address,
     image,
     description,
