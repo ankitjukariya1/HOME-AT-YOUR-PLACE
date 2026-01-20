@@ -3,7 +3,8 @@ const {validationResult , matchedData} = require('express-validator');
 const bcrypt = require('bcrypt');
 
 // local modules 
-const signupSchema = require ('../model/signup')
+const users = require ('../model/signup');
+
 
 
 // login controller
@@ -20,7 +21,6 @@ exports.loginPost = (req,res,next)=>{
    const result = validationResult(req);
    if (!result.isEmpty()){
       const errMsg = (result.errors).map(val=> val.msg );
-      console.log(errMsg)
       res.render('auth/login.ejs',{
         status:false,
      error:errMsg,
@@ -29,7 +29,6 @@ exports.loginPost = (req,res,next)=>{
   })
    }
    else{
-   console.log(result.errors);
   res.redirect('/host')}
 }
 
@@ -49,7 +48,6 @@ exports.signupPost = async (req, res,next ) =>{
       const result = validationResult(req);
       if (!result.isEmpty()){
         const errorMsg = result.errors.map(val=>val.msg)
-        console.log(result.errors);
          res.render('auth/signup.ejs',{
           error: errorMsg,
           link: '/css/signup.css',
@@ -61,16 +59,15 @@ exports.signupPost = async (req, res,next ) =>{
            // first hashing of password
            const saltRound =10;
           const hashedPassword = await bcrypt.hash(matchedData(req).password,saltRound) ;
-          console.log(hashedPassword);
            //now update hashed password in matchedData
           // matchedData(req).password = hashedPassword;(this is wrong because with every new call it return fresh data if we update here but later if we call again matched data it will give us again fresh data)
 
-          //so first we store matcheddata and then update pass and then send to signupSchema
+          //so first we store matcheddata and then update pass and then send to users
           const data = matchedData(req);
           // now update data with hashed pass
           data.password=hashedPassword;
         try{
-         const user = new signupSchema(data);
+         const user = new users(data);
          await user.save();
          }
          catch(err){

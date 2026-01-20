@@ -1,5 +1,5 @@
 const { ResultWithContextImpl } = require("express-validator/lib/chain");
-let {home} = require("./../model/home");
+let home = require("./../model/home");
 const {validationResult , matchedData} = require ('express-validator')
 
 exports.regHomeGet = (req, res, next) => {
@@ -33,8 +33,7 @@ exports.regHomePost = async (req, res, next) => {
    }
 
   else{  //  if (result.isEmpty()){
-  //   console.log("error is there");
-  //   console.log(result.errors);
+ 
   //  }
   //const {houseName, price, contactNo, address, image} = req.body;  since now we need to pass whole object directly in schema we dont need to destructure this req.body send us object which we can send diretly
 
@@ -42,7 +41,6 @@ exports.regHomePost = async (req, res, next) => {
     
   let house = new home (matchedData(req)); // constructor
     await house.save();
-    console.log("i am  below here");
 
      const { houseName, price, contactNo, address, image, description } = matchedData(req);
   

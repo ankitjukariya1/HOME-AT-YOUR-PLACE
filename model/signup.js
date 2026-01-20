@@ -27,4 +27,4 @@ signupSchema = new mongoose.Schema({
     required : true,
   }
 })
-module.exports =  mongoose.model('user',signupSchema);
+module.exports = mongoose.model('user',signupSchema);

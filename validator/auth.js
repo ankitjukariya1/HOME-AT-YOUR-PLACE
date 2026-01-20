@@ -1,6 +1,6 @@
 const {body} = require('express-validator');
 //local module
-const signupSchema = require ('../model/signup')
+const users = require ('../model/signup')
 
 exports.loginValidator = [ 
   body('userName')
@@ -31,7 +31,7 @@ exports.signupValidator =[
   .isEmail().withMessage('Enter valid Email')
   .custom(async val=>{
   
-    const user = await signupSchema.findOne({
+    const user = await users.findOne({
       email : val 
     })
      if (user) throw new Error("User is alerady registered with this Email id");
@@ -42,7 +42,7 @@ exports.signupValidator =[
   .notEmpty().withMessage('Enter contact no.')
   .custom(async (val)=>{
       // checking if user exist with this phone no
-       const user = await signupSchema.findOne({contactNo: val});
+       const user = await users.findOne({contactNo: val});
        if (user){
         throw new Error ("User is alerady registered with this Contact number ")
         
@@ -59,8 +59,7 @@ exports.signupValidator =[
     {
       minLength:5
     }
-  ).withMessage('Password must be at least 5 characters long and include at least one number, one lowercase letter, one uppercase letter, and one special character.')
-  ,
+  ).withMessage('Password must be at least 5 characters long and include at least one number, one lowercase letter, one uppercase letter, and one special character.'),
 
   // confirm password
   body('confirmPassword')

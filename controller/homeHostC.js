@@ -1,4 +1,4 @@
-const {home} = require("../model/home");
+const home = require("../model/home");
 
 const homeHostGet = async (req, res, next) => {
   const result = await home.find();
