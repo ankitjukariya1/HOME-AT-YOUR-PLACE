@@ -2,9 +2,9 @@
 const express = require('express');
 const homeDetailsRouter = express.Router();
 //internal modeule
-const {homeDetailsGet} = require('./../controller/homeDetails');
+const {homeDetailsGet,isSession, isAuthorised} = require('./../controller');
 
-homeDetailsRouter.get('/home-details/:id',homeDetailsGet);
+homeDetailsRouter.get('/home-details/:id', isSession,isAuthorised('owner','visitor'),homeDetailsGet);
 
 
 module.exports={homeDetailsRouter};

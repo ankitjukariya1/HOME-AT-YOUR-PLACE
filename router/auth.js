@@ -1,12 +1,12 @@
 const express = require('express');
 //local module
-const {loginGet , loginPost , signupGet , signupPost } = require('../controller')
+const {loginGet , loginPost , signupGet , signupPost, isSession } = require('../controller')
 const {loginValidator , signupValidator} = require('../validator/auth')
 
 const authRouter = express.Router();
 authRouter.get('/home/login', loginGet);
 authRouter.post('/home/login',loginValidator,loginPost);
-authRouter.get('/sign-up' , signupGet);
+authRouter.get('/sign-up', signupGet);
 authRouter.post('/sign-up' ,signupValidator ,signupPost);
 
 //export

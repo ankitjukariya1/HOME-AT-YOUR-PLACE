@@ -3,10 +3,11 @@ let home = require("./../model/home");
 const {validationResult , matchedData} = require ('express-validator')
 
 exports.regHomeGet = (req, res, next) => {
-  res.render("host/regHomeGet.ejs", {
+  return res.render("host/regHomeGet.ejs", {
     error:false,
     title: "Register",
     link: "/css/regHomeGet.css",
+    role: req.user.role
   });
 };
 
@@ -19,44 +20,47 @@ exports.regHomePost = async (req, res, next) => {
         return val.msg;
       })
       const { houseName, price, contactNo, address, image, description } = req.body;
-        res.render('host/regHomeGet.ejs',{
-          error: errorMsg,
-          houseName,
-          price,
-          contactNo,
-          address,
-          image,
-          description,
-          title: "Registere Again",
-          link: "/css/regHomeGet.css",
-        })
-   }
-
-  else{  //  if (result.isEmpty()){
+      return res.render('host/regHomeGet.ejs',{
+        error: errorMsg,
+        houseName,
+        price,
+        contactNo,
+        address,
+        image,
+        description,
+        title: "Registere Again",
+        link: "/css/regHomeGet.css",
+        role: req.user.role
+      })
+    }  //  if (result.isEmpty()){
  
   //  }
-  //const {houseName, price, contactNo, address, image} = req.body;  since now we need to pass whole object directly in schema we dont need to destructure this req.body send us object which we can send diretly
+    //const {houseName, price, contactNo, address, image} = req.body;  since now we need to pass whole object directly in schema we dont need to destructure this req.body send us object which we can send diretly
 
-  
-    
-  let house = new home (matchedData(req)); // constructor
+    let house = new home (matchedData(req)); // constructor
     await house.save();
 
-     const { houseName, price, contactNo, address, image, description } = matchedData(req);
+    const { houseName, price, contactNo, address, image, description } = matchedData(req);
   
-  res.render("host/regHomePost.ejs", {
-    houseName,
-    price,
-    contactNo,
-    address,
-    image,
-    description,
-    title: "Registered-Home",
-    link: "/css/regHomePost.css",
-  })
-
-}}
+    return res.render("host/regHomePost.ejs", {
+      houseName,
+      price,
+      contactNo,
+      address,
+      image,
+      description,
+      title: "Registered-Home",
+      link: "/css/regHomePost.css",
+      role : req.user.role
+    })
+  }
   catch (err){
-    console.log("their is some issue");
+    console.log("Registration error: " + err);
+    return res.render('host/regHomeGet.ejs',{
+      error: ["Failed to register home. Please try again."],
+      title: "Register",
+      link: "/css/regHomeGet.css",
+      role:req.user.role
+    })
   }
 }

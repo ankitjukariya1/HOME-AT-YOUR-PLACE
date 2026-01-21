@@ -3,6 +3,8 @@ const express = require('express');
 const path = require('path');
 const mongoose = require ('mongoose');
 const dotenv = require('dotenv');
+const session = require ('express-session');
+const { MongoStore } = require('connect-mongo');
 
 // Load environment variables
 dotenv.config();
@@ -14,6 +16,10 @@ const {homeDetailsRouter} = require('./router/homeDetails');
 const {homeHostRouter} = require ('./router/homeHost');
 const errorRouter = require('./router/error');
 const {authRouter} = require('./router/auth');
+
+
+
+
 
 //create server 
 
@@ -32,13 +38,23 @@ const {authRouter} = require('./router/auth');
  .catch((err)=>{
     console.log(err);
   })
- 
+ // create session 
+app.use(session({
+   secret: process.env.session_secret,
+   resave: false,
+   saveUninitialized: false,
+   store: MongoStore.create({
+      mongoUrl : process.env.MONGODB_URL,
+   }),
+  cookie: { 
+   httpOnly: true
+}}))
 
  //ejs handling
 app.set('view engine','ejs');
 app.set('views','views'); // no need in case my ejs folder name is views
 
-// serving css file 
+// serving css file make this path static
 app.use(express.static(path.join(__dirname,'public')));
 
 // encoding the data
