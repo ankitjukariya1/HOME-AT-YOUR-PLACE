@@ -156,3 +156,16 @@ exports.isAuthorised =  (...allowedRoles)=>{
    return  next();
 }}
 
+// signout 
+
+exports.signoutGet = (req,res,next)=>{
+  return req.session.destroy((err)=>{
+    if(err){ 
+      console.log(err);
+     return res.render('/');
+    }
+   res.clearCookie("connect.sid");
+   return res.redirect('/login') ;
+   
+  });
+}

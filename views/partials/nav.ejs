@@ -11,7 +11,11 @@
       <a href="/favourite" class="nav-link">Favourites</a>  <%}%>
       <a href="/services" class="nav-link">Services</a>
       <a href="/contact-us" class="nav-link">Contact Us</a>
-      <a href="/home/login" class="nav-link" >Login\sign-up</a>
+      <% if (role!=false){ %>
+      <a href="/home/login" class="nav-link" >Login\sign-up</a>  
+      <% }else {%>
+        <a href="/sign-out">Sign Out</a>
+      <%}%>
     </div>
   </div>
 </nav>
