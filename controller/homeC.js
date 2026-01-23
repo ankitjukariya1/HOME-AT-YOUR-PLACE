@@ -1,12 +1,16 @@
-const home= require('./../model/home');
+const Home= require('./../model/home');
 
 
 exports.homeGet =async (req,res,next)=>{
- const data = await home.find();
+  let role = false;
+  if (req.session.user){
+      role =req.session.user.role;}
+     
+ const data = await Home.find();
  
   return res.render('store/home.ejs',{title:'Home',
     
-    role: false,
+    role,
     link:'/css/home.css', 
     houses: data })}
 

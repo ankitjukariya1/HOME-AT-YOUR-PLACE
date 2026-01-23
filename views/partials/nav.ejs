@@ -1,17 +1,17 @@
 <nav class="main-nav">
   <div class="nav-container">
     <div class="nav">
-      <% if(role!='owner'){%>
+      
       <a href="/" class="nav-link">Home</a>
-      <%}%>
+      
       <% if(role==='owner'){%>
-      <a href="/host" class="nav-link">Home</a>
+      <a href="/host" class="nav-link">Registered Home</a>
       <a href="/reg-home" class="nav-link">Register Home</a> <%}%>
       <% if(role==='visitor'){%>
       <a href="/favourite" class="nav-link">Favourites</a>  <%}%>
       <a href="/services" class="nav-link">Services</a>
       <a href="/contact-us" class="nav-link">Contact Us</a>
-      <% if (role!=false){ %>
+      <% if (role==false){ %>
       <a href="/home/login" class="nav-link" >Login\sign-up</a>  
       <% }else {%>
         <a href="/sign-out">Sign Out</a>

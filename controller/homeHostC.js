@@ -31,6 +31,8 @@ const homeHostPost = async (req, res, next) => {
   }}
 };
 
+// Home Edit
+
 const homeEdit = async (req, res, next) => {
   const id = req.params.id;
   const house = await home.findById(id);

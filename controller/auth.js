@@ -165,7 +165,7 @@ exports.signoutGet = (req,res,next)=>{
      return res.render('/');
     }
    res.clearCookie("connect.sid");
-   return res.redirect('/login') ;
+   return res.redirect('/home/login') ;
    
   });
 }

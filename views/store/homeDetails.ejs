@@ -14,7 +14,12 @@
   <p>Description : <%=home.description %></p>
  </div>
  <div id = bookMe>
-  <a href="/home-details/<%= home.id %>/paymentDetails">BOOK ME</a>
+  <% if (role==='owner'){%>
+     <a href="/home/home-edit/<%= home.id %>"> EDIT</a>
+  <%} else { %>
+ <a href="/home-details/<%= home.id %>/paymentDetails">BOOK ME</a>
+  <% } %>
+ 
  </div>
 </main>
 </body>

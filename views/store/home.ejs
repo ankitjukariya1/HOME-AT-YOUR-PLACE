@@ -13,7 +13,9 @@
           <p class="house-location"><strong>Location:</strong> <%= house.address %></p>
           <div class="card-links">
             <a href="/home-details/<%= house.id %>" class="detail-link">View Details</a>
-            <a href="/home-details/<%= house.id %>/paymentDetails" class="book-now-btn">BOOK ME</a>
+
+            <% if (role!='owner'){ %>
+            <a href="/home-details/<%= house.id %>/paymentDetails" class="book-now-btn">BOOK ME</a>  <%}%>
           </div>
          </div>
        </div>
