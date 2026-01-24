@@ -26,5 +26,8 @@ exports.regValidator= [
   body('description')
   .trim()
   .isLength({max:1000}).withMessage('Description cannot exceed 1000 characters'),
+
+  body('userId')
+  
    
 ]

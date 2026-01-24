@@ -28,6 +28,9 @@ const homeSchema = new mongoose.Schema({
     type: String,
     maxlength: [1000, 'Description cannot exceed 1000 characters']
   },
+  userId : {
+     type : String,
+  },
   createdAt: {
     type: Date,
     default: Date.now

@@ -1,13 +1,13 @@
 const express = require('express');
 //local module
-const {loginGet , loginPost , signupGet , signupPost, signoutGet } = require('../controller')
+const {loginGet , loginPost , signupGet , signupPost, signoutGet,isSession } = require('../controller')
 const {loginValidator , signupValidator} = require('../validator/auth')
 
 const authRouter = express.Router();
-authRouter.get('/home/login', loginGet);
-authRouter.post('/home/login',loginValidator,loginPost);
-authRouter.get('/sign-up', signupGet);
-authRouter.post('/sign-up' ,signupValidator ,signupPost);
-authRouter.get('/sign-out',signoutGet)
+authRouter.get('/home/login',isSession('notRequired'), loginGet);
+authRouter.post('/home/login',loginValidator,isSession('notRequired'),loginPost);
+authRouter.get('/sign-up',isSession('notNeeded'), signupGet);
+authRouter.post('/sign-up' ,signupValidator ,isSession('notRequired'),signupPost);
+authRouter.get('/sign-out',isSession('required'),signoutGet)
 //export
 module.exports= {authRouter};

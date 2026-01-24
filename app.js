@@ -13,7 +13,7 @@ dotenv.config();
 const {homeRouter} = require ('./router/home');
 const {regHomeRouter} = require ('./router/regHome');
 const {homeDetailsRouter} = require('./router/homeDetails');
-const {homeHostRouter} = require ('./router/homeHost');
+const {regHostHomeRouter} = require ('./router/regHostHome');
 const errorRouter = require('./router/error');
 const {authRouter} = require('./router/auth');
 
@@ -66,7 +66,7 @@ app.use(express.json({ limit: '10mb' }));
 app.use(homeRouter);
 app.use(regHomeRouter);
 app.use(homeDetailsRouter);
-app.use(homeHostRouter);
+app.use(regHostHomeRouter);
 // app.use(contact-us);
 
 app.use (authRouter);

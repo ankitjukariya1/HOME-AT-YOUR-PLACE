@@ -49,7 +49,6 @@ exports.loginPost = async (req,res,next)=>{
    // now pass is hashed so to compared we have to use bcrypt library
    const isPasswordValid = await bcrypt.compare(password, user.password);
    if (!isPasswordValid){
-    console.log('pass section')
     return res.render('auth/login.ejs', {
      status:false,
      error:["Invalid User-Name and password"],
@@ -59,7 +58,6 @@ exports.loginPost = async (req,res,next)=>{
   })
    }
 // now user logedin successfully create session 
- console.log(user.accountType);
    req.session.user = {
    
      id : user.id,
@@ -134,8 +132,11 @@ exports.signupPost = async (req, res,next ) =>{
 
 // checking session
   // authentication
-exports.isSession = (req,res,next)=>{
+exports.isSession = (sesState)=>{
 
+  
+return (req,res,next)=>{
+    if (sesState === 'required'){
    if(!req.session.user){
 
     return res.redirect('/home/login');
@@ -145,7 +146,18 @@ exports.isSession = (req,res,next)=>{
     return next();
    }
 }
+else{
+   if(req.session.user){
 
+    return res.redirect('/');
+   }
+    else{
+    return next();
+   }
+}
+}
+
+}
 //authorisation
 
 exports.isAuthorised =  (...allowedRoles)=>{

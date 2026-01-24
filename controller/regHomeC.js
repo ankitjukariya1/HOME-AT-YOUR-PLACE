@@ -5,6 +5,7 @@ const {validationResult , matchedData} = require ('express-validator')
 exports.regHomeGet = (req, res, next) => {
   return res.render("host/regHomeGet.ejs", {
     error:false,
+    userId : req.user.id,
     title: "Register",
     link: "/css/regHomeGet.css",
     role: req.user.role
@@ -12,6 +13,7 @@ exports.regHomeGet = (req, res, next) => {
 };
 
 exports.regHomePost = async (req, res, next) => {
+  // input validation
   try {
    const result = validationResult(req);
    
@@ -19,7 +21,7 @@ exports.regHomePost = async (req, res, next) => {
       errorMsg = result.errors.map(val=>{
         return val.msg;
       })
-      const { houseName, price, contactNo, address, image, description } = req.body;
+      const { houseName, price, contactNo, address, image, description,userId } = req.body;
       return res.render('host/regHomeGet.ejs',{
         error: errorMsg,
         houseName,
