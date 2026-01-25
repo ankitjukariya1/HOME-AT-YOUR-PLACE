@@ -10,14 +10,9 @@ const { MongoStore } = require('connect-mongo');
 dotenv.config();
 
 // local module
-const {homeRouter} = require ('./router/home');
-const {regHomeRouter} = require ('./router/regHome');
-const {homeDetailsRouter} = require('./router/homeDetails');
-const {regHostHomeRouter} = require ('./router/regHostHome');
-const errorRouter = require('./router/error');
-const {authRouter} = require('./router/auth');
 
 
+const  {homeRouter,regHostHomeRouter,regHomeRouter,homeDetailsRouter,errorRouter,authRouter,favRouter} = require('./router')
 
 
 
@@ -67,6 +62,7 @@ app.use(homeRouter);
 app.use(regHomeRouter);
 app.use(homeDetailsRouter);
 app.use(regHostHomeRouter);
+app.use(favRouter)
 // app.use(contact-us);
 
 app.use (authRouter);

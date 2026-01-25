@@ -1,4 +1,4 @@
-const { ResultWithContextImpl } = require("express-validator/lib/chain");
+
 let home = require("./../model/home");
 const {validationResult , matchedData} = require ('express-validator')
 
@@ -24,6 +24,7 @@ exports.regHomePost = async (req, res, next) => {
       const { houseName, price, contactNo, address, image, description,userId } = req.body;
       return res.render('host/regHomeGet.ejs',{
         error: errorMsg,
+        userId : req.user.id,
         houseName,
         price,
         contactNo,
@@ -59,6 +60,7 @@ exports.regHomePost = async (req, res, next) => {
   catch (err){
     console.log("Registration error: " + err);
     return res.render('host/regHomeGet.ejs',{
+      userId : req.user.id,
       error: ["Failed to register home. Please try again."],
       title: "Register",
       link: "/css/regHomeGet.css",

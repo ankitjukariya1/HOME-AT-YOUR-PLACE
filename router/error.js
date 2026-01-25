@@ -5,4 +5,4 @@ const errorC = require('../controller/errorC');
 const errRouter = express.Router();
 errRouter.use(errorC);
 
-module.exports = errRouter;
+module.exports = {errRouter};

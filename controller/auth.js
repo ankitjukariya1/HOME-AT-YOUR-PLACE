@@ -64,7 +64,6 @@ exports.loginPost = async (req,res,next)=>{
      role : user.accountType,
 
    }
-   console.log(user.accountType)
    if (user.accountType === 'owner'){
    return res.redirect('/host')}
    else if (user.accountType === 'visitor'){
