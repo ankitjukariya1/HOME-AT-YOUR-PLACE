@@ -14,10 +14,25 @@
           <div class="card-links">
             <a href="/home-details/<%= house.id %>" class="detail-link">View Details</a>
 
+
             <% if (role!='owner'){ %>
             <a href="/home-details/<%= house.id %>/paymentDetails" class="book-now-btn">BOOK ME</a>  <%}%>
           </div>
          </div>
+        <%if(role==='visitor'){ %>
+         <div class ="fav">
+          <% if (favourites.includes(house.id)){ %>
+            <form action="/favourite/<%=house.id %>" method="post">
+              <input type="hidden" name="action" value="removeFav">
+               <button type="submit">❤️</button></form>
+          <%} else { %>
+              <form action="/favourite/<%=house.id %>" method="post">
+                <input type="hidden" name="action" value="makeFav">
+                 <button type="submit">♡</button></form>
+          <%}%>
+
+         </div>
+        <%}%>
        </div>
        
     <%})%>

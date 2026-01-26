@@ -29,7 +29,8 @@ const homeSchema = new mongoose.Schema({
     maxlength: [1000, 'Description cannot exceed 1000 characters']
   },
   userId : {
-     type : String,
+     type : mongoose.Schema.Types.ObjectId,  // always store id in this format it will help in .populate
+     ref: 'User'
   },
   createdAt: {
     type: Date,
@@ -43,7 +44,7 @@ const homeSchema = new mongoose.Schema({
 
 //module.exports = homeSchema; wrong because we exporting schema not models
 
-module.exports = mongoose.model('home',homeSchema);
+module.exports = mongoose.model('Home',homeSchema);
 
 
 

@@ -25,6 +25,12 @@ signupSchema = new mongoose.Schema({
   password : {
     type : String,
     required : true,
-  }
+  },
+  favourites : [
+    {
+      type : mongoose.Schema.Types.ObjectId,  // because objectid is not js type its mongodb type so we need to import it
+      ref : 'Home'
+    }
+  ]
 })
-module.exports = mongoose.model('user',signupSchema);
+module.exports = mongoose.model('User',signupSchema);

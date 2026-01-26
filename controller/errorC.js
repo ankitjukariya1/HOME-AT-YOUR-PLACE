@@ -3,4 +3,4 @@ const errorC =(req,res,next)=>{
     role: false,
     link:'/css/error.css'});
 }
-module.exports = errorC;
+module.exports = {errorC};

@@ -12,7 +12,7 @@ dotenv.config();
 // local module
 
 
-const  {homeRouter,regHostHomeRouter,regHomeRouter,homeDetailsRouter,errorRouter,authRouter,favRouter} = require('./router')
+const  {homeRouter,regHostHomeRouter,regHomeRouter,homeDetailsRouter, errRouter,authRouter,favRouter} = require('./router')
 
 
 
@@ -62,8 +62,8 @@ app.use(homeRouter);
 app.use(regHomeRouter);
 app.use(homeDetailsRouter);
 app.use(regHostHomeRouter);
-app.use(favRouter)
+app.use(favRouter);
 // app.use(contact-us);
 
 app.use (authRouter);
-app.use(errorRouter); // it should be in last 
+app.use(errRouter); // it should be in last 
