@@ -1,0 +1,30 @@
+<%- include('../partials/head.ejs') %>
+<body>
+  <header>
+    <%- include ('../partials/nav.ejs') %>
+  </header>
+<main>
+  <% favourites.forEach(house=>{%>
+      <div class="house-card">
+        
+         <img src="<%=house.image %>" alt="House image"> 
+         <div class="card-content">
+          <p class="houseName"><strong>House Name:</strong> <%=house.houseName %></p>
+          <p class="house-price"><strong>Price:</strong> <%= house.price %></p> 
+          <p class="house-location"><strong>Location:</strong> <%= house.address %></p>
+          <p class="contact"><strong>Contact:</strong> <%= house.contactNo %></p>
+          <p class="description"><strong>Description:</strong> <%= house.description %></p>
+          
+          <div class="card-actions">
+            <form action="/favourite/<%=house.id %>" method="post">
+              <input type="hidden" name="action" value="removeFav">
+              <button type="submit" class="remove-fav-btn">Remove from Favourites</button>
+            </form>
+          </div>
+         </div>
+         </div>
+       </div>
+  <%})%>
+</main>
+</body>
+</html>

@@ -1,7 +1,12 @@
 const User = require ('../model/signup')
 exports. favGet = async (req,res,next)=>{
    user = await User.findById(req.user.id).populate('favourites');
-
+    res.render ('store/fav.ejs',{
+      title: 'Favourites',
+      link: '/css/fav.css',
+      favourites : user.favourites,
+      role : req.user.role
+    })
     
 }
 exports.favPost = async (req,res,next)=>{
