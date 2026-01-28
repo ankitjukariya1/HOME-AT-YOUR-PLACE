@@ -2,7 +2,7 @@
 const express = require('express');
 const homeDetailsRouter = express.Router();
 //internal modeule
-const {homeDetailsGet,isSession, isAuthorised} = require('./../controller');
+const {homeDetailsGet,isSession, isAuthorised} = require('../controller');
 
 homeDetailsRouter.get('/home-details/:id', isSession('required'),isAuthorised('owner','visitor'),homeDetailsGet);
 
